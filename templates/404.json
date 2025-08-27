@@ -1,0 +1,11 @@
+// 404 template
+//this code section describes the structure of the 404 error page template
+{
+  "name": "404",
+  "sections": {
+    "template": {
+      "type": "template-404"
+    }
+  },
+  "order": ["template"]
+}
