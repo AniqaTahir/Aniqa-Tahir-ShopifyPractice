@@ -10,9 +10,11 @@
     {{ content_for_header }}
     <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    // Load AlpineJS //defer attribute makes sure that the script is executed after the HTML is fully parsed //alpinejs
-    is a lightweight javascript framework for adding interactivity to html //it is used for handling the mobile menu and
-    dropdowns in navigation menu in code
+    {% comment %}
+      Load AlpineJS //defer attribute makes sure that the script is executed after the HTML is fully parsed //alpinejs
+      is a lightweight javascript framework for adding interactivity to html //it is used for handling the mobile menu and
+      dropdowns in navigation menu in code
+    {% endcomment %}
     <script src="{{ 'application.js' | asset_url }}" defer></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   </head>

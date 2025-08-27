@@ -1,6 +1,8 @@
 <article class="py-8" itemscope itemtype="http://schema.org/BlogPosting">
-  //everything is here about blog posting
-  {% comment %} this below block is checking block.title article title article authors etc {% endcomment %}
+  {% comment %}
+    //everything is here about blog posting
+    this below block is checking block.title article title article authors etc
+  {% endcomment %}
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'article_title' %}
@@ -13,8 +15,10 @@
           </div>
         </div>
 
-        //if the value of block.type is article_author then this code will run, if author is enabled from customizer
-        then only author name will be shown
+        {% comment %}
+          //if the value of block.type is article_author then this code will run, if author is enabled from customizer
+          then only author name will be shown
+        {% endcomment %}
       {% when 'article_author' %}
         <div class="flex items-center justify-center">
           <div class="max-w-7xl text-center" itemscope itemtype="http://schema.org/Person">
@@ -23,8 +27,10 @@
             {% endif %}
           </div>
         </div>
-        //when the value of block.type is article_published_date then this code will run, if published date is enabled
-        from customizer then only published date will be shown
+        {% comment %}
+          //when the value of block.type is article_published_date then this code will run, if published date is enabled
+          from customizer then only published date will be shown
+        {% endcomment %}
       {% when 'article_published_date' %}
         <div class="flex items-center justify-center">
           <div class="max-w-7xl text-center">
@@ -87,8 +93,10 @@
   </div>
 
   <div id="comment_form" class="mb-8">
-    //form new_comment is a shopify liquid form for adding new comment to article, article object is passed to the form
-    so it knows to add comment to article
+    {% comment %}
+      //form new_comment is a shopify liquid form for adding new comment to article, article object is passed to the form
+      so it knows to add comment to article
+    {% endcomment %}
     {% form 'new_comment', article %}
       //article object is passed to the form so it knows to add comment to article
       <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">

@@ -15,8 +15,10 @@
       </div>
 
       <div class="-mr-2 -my-2 ml-3 md:hidden">
-        //x-on:click is alpine js syntax when we click on this button it will set mobileMenuOpen to true and it will
-        show the mobile menu
+        {% comment %}
+          //x-on:click is alpine js syntax when we click on this button it will set mobileMenuOpen to true and it will
+          show the mobile menu
+        {% endcomment %}
         <button
           x-on:click="mobileMenuOpen = true"
           type="button"
@@ -31,8 +33,10 @@
           {% if link.links != blank %}
             {% assign link_handle = link.handle | replace: '-', '_' %}
             <div class="relative" x-data="{ {{ link_handle }}: false }">
-              //when we click on this button it will toggle the value of link_handle variable //x-show is alpine js
-              syntax it will show the div when link_handle is true
+              {% comment %}
+                //when we click on this button it will toggle the value of link_handle variable //x-show is alpine js
+                syntax it will show the div when link_handle is true
+              {% endcomment %}
 
               <button
                 type="button"
@@ -56,7 +60,7 @@
               >
                 <div class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
                   <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                    //this is for child links in navigation menu //we loop through the child links of the parent link
+                    {% comment %} //this is for child links in navigation menu //we loop through the child links of the parent link {% endcomment %}
                     {% for childlink in link.links %}
                       <a href="{{ childlink.url }}" class="-m-3 p-3 flex items start rounded-lg hover:bg-gray-100">
                         <div class="ml-4">
@@ -77,7 +81,7 @@
       </nav>
       <!-- CART BUTTON / ACCOUNT LINKS IF ENABLED -->
       <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
-        //when we click on this button it will set searchBarOpen to true and it will show the search bar
+        {% comment %} //when we click on this button it will set searchBarOpen to true and it will show the search bar {% endcomment %}
         <button
           x-on:click="searchBarOpen = true"
           type="button"
@@ -91,7 +95,7 @@
           {% render 'icon-shopping-bag' %}
         </a>
 
-        //we check if customer accounts are enabled from shop settings
+        {% comment %} //we check if customer accounts are enabled from shop settings {% endcomment %}
 
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
@@ -127,7 +131,7 @@
                 <h1 class="text-lg text-gray-500">{{ section.settings.mobile_menu_title }}</h1>
               </div>
               <div class="-mr-2">
-                //X when we click on this button it will set mobileMenuOpen to false and it will hide the mobile menu
+                {% comment %} //X when we click on this button it will set mobileMenuOpen to false and it will hide the mobile menu {% endcomment %}
                 <button x-on:click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 text-gray-500">
                   {% render 'icon-close' %}
                 </button>
@@ -137,8 +141,10 @@
             <!-- NAVIGATION LINKS FOR MOBILE MENU -->
             <div class="pt-3">
               <nav class="grid gap-y-7">
-                //this is for main links in navigation menu //we loop through the main links of the navigation menu //if
-                the main link has child links then we show the child links in a dropdown
+                {% comment %}
+                  //this is for main links in navigation menu //we loop through the main links of the navigation menu //if
+                  the main link has child links then we show the child links in a dropdown
+                {% endcomment %}
 
                 {% for link in main_menu_linklist %}
                   {% if link.links != blank %}
@@ -152,8 +158,10 @@
                         <div>{{ link.title }}</div>
                         {% render 'icon-dropdown' %}
                       </button>
-                      //this div will show the child links when mobile_link_handle is true //x-show is alpine js syntax
-                      it will show the div when mobile_link_handle is true
+                      {% comment %}
+                        //this div will show the child links when mobile_link_handle is true //x-show is alpine js syntax
+                        it will show the div when mobile_link_handle is true
+                      {% endcomment %}
 
                       <div x-show="{{ mobile_link_handle }}" class="grid gap-y-7 py-3">
                         {% for childlink in link.links %}
@@ -184,8 +192,10 @@
   </div>
 
   <div x-show="searchBarOpen" class="w-full absolute top-0 bg-white border">
-    //when we click outside the search bar it will set searchBarOpen to false and it will hide the search bar
-    @click.away="searchBarOpen = false"
+    {% comment %}
+      //when we click outside the search bar it will set searchBarOpen to false and it will hide the search bar
+      @click.away="searchBarOpen = false"
+    {% endcomment %}
     <button type="button" x-on:click="searchBarOpen = false" class="absolute top-0 right-0 mr-5 mt-5 text-gray-500">
       {% render 'icon-close' %}
     </button>
