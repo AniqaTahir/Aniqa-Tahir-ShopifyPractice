@@ -1,9 +1,16 @@
 <div class="py-8">
+  {% comment %}
+    //here we are getting the blog object, blog handle is 'news' by default in shopify
+    //paginate is a shopify liquid tag that is used to paginate the articles, by section.settings.number_of_blog_posts means number of articles per page
+    //section.settings.number_of_blog_posts is a setting that we will create in the schema below
+  {% endcomment %}
+  {% assign blog = blogs.news %}
   {% paginate blog.articles by section.settings.number_of_blog_posts %}
     <h1 class="text-center text-3xl">{{ blog.title }}</h1>
 
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% comment %} //in this loop we are iterating over the articles of the blog object {% endcomment %}
         {% for article in blog.articles %}
           <div class="w-full py-6 px-3">
             <div class="bg-white shadow-xl rounded-lg overflow-hidden">
@@ -23,7 +30,10 @@
 
               <div class="p-4">
                 <h1 class="text-xl font-medium my-4">{{ article.title }}</h1>
-
+                {% comment %}
+                  //here excerpt is a short description of the article, if excerpt is not available then we are using the content of the article
+                  //strip_html is a shopify liquid filter that removes the html tags from the string
+                {% endcomment %}
                 {% if article.excerpt.size > 0 %}
                   <p>{{ article.excerpt | strip_html | truncatewords: 15 }}</p>
                 {% else %}
